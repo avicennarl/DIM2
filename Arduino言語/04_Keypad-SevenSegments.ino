@@ -50,60 +50,62 @@ byte Chars[35][9] {
            {'[',1,0,0,1,1,1,0,0},//[/33
            {'_',0,0,0,1,0,0,0,0},//_/34
            };
+
 void setup() {
- // set segment pins as OUTPUT
-pinMode(seg[0],OUTPUT);
-pinMode(seg[1],OUTPUT);
-  pinMode(seg[2],OUTPUT);
-pinMode(seg[3],OUTPUT);
-pinMode(seg[4],OUTPUT);
-pinMode(seg[5],OUTPUT);
-pinMode(seg[6],OUTPUT);
-pinMode(seg[7],OUTPUT);
+           // set segment pins as OUTPUT
+           pinMode(seg[0],OUTPUT);
+           pinMode(seg[1],OUTPUT);
+           pinMode(seg[2],OUTPUT);
+           pinMode(seg[3],OUTPUT);
+           pinMode(seg[4],OUTPUT);
+           pinMode(seg[5],OUTPUT);
+           pinMode(seg[6],OUTPUT);
+           pinMode(seg[7],OUTPUT);
 }
-void setState(bool mode) //sets the hole segment state to "mode"
-{ for(int i = 0;i<=6;i++)
-{
- digitalWrite(seg[i],mode);
+
+void setState(bool mode) { 
+           //sets the hole segment state to "mode"
+           for(int i = 0;i<=6;i++){
+                      digitalWrite(seg[i],mode);
+           }
 }
+
+void Print(char Char){
+           // print any character on the segment ( Note : you can't use capital characters )
+           int charNum = -1;// set search resault to -1
+           setState(segMode);//turn off the segment
+           for(int i = 0; i < chars ;i++){//search for the enterd character
+                      if(Char == Chars[i][0]){//if the character found
+                                 charNum = i;//set the resault number into charNum ( because this function prints the character using it's number in the array )
+                      }
+           }
+           if(charNum == -1 ){
+                      // if the character not found
+                      for(int i = 0;i <= 6;i++){
+                                 digitalWrite(seg[i],HIGH);
+                                 delay(100);
+                                 digitalWrite(seg[i],LOW);
+                      }
+                      for(int i = 0;i <= 2;i++){
+                                 delay(100);
+                                 setState(HIGH);
+                                 delay(100);
+                                 setState(LOW);
+                      }
+           }
+           else{
+                      // else if the character found print it
+                      for(int i = 0;i<8;i++){
+                                 digitalWrite(seg[i],Chars[charNum][i+1]);
+                      }
+           }
 }
-void Print(char Char) // print any character on the segment ( Note : you can't use capital characters )
-{ 
- int charNum = -1;// set search resault to -1
- setState(segMode);//turn off the segment
-for(int i = 0; i < chars ;i++){//search for the enterd character
- if(Char == Chars[i][0]){//if the character found
-   charNum = i;//set the resault number into charNum ( because this function prints the character using it's number in the array )
- }
-}
-if(charNum == -1 )// if the character not found
-{
- for(int i = 0;i <= 6;i++)
- {
- digitalWrite(seg[i],HIGH);
- delay(100);
- digitalWrite(seg[i],LOW);
- }
- for(int i = 0;i <= 2;i++)
-{
- delay(100);
- setState(HIGH);
- delay(100);
- setState(LOW); 
-}
-}else // else if the character found print it
-{
-for(int i = 0;i<8;i++)
-   {digitalWrite(seg[i],Chars[charNum][i+1]);
-   }
-}
-}
-void Print(int num) // print any number on the segment
-{ 
- setState(segMode);//turn off the segment
-if(num > chars || num < 0 )// if the number is not declared
-{
- for(int i = 0;i <= 6;i++)
- {
- digitalWrite(seg[i],HIGH);
- delay(100);
+
+void Print(int num){
+           // print any number on the segment
+           setState(segMode);//turn off the segment
+           if(num > chars || num < 0 ){
+                      // if the number is not declared
+                      for(int i = 0;i <= 6;i++){
+                                 digitalWrite(seg[i],HIGH);
+                                 delay(100);
