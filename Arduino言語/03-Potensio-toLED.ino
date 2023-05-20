@@ -1,16 +1,16 @@
-int ledtest=10;
-int readvalue=0;
-int ledvalue=0;
+// int ledtest=10;
+// int readvalue=0;
+// int ledvalue=0;
 
-void setup(){
-  pinMode(ledtest, OUTPUT);
-}
+// void setup(){
+//   pinMode(ledtest, OUTPUT);
+// }
 
-void loop(){
-  readvalue= analogRead(A1);
-  ledvalue= map(readvalue, 0, 1024, 0, 255);
-  analogWrite(ledtest, ledvalue);
-}
+// void loop(){
+//   readvalue= analogRead(A1);
+//   ledvalue= map(readvalue, 0, 1024, 0, 255);
+//   analogWrite(ledtest, ledvalue);
+// }
 
 int led = 9;
 int pinPot = A1; 
