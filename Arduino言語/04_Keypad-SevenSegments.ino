@@ -109,3 +109,28 @@ void Print(int num){
                       for(int i = 0;i <= 6;i++){
                                  digitalWrite(seg[i],HIGH);
                                  delay(100);
+                                 setState(LOW); 
+                      }
+           }
+           else {
+                      // else if the number declared, print it
+                      if(segMode == 0){ //for segment mode
+                                 for(int i = 0;i<8;i++)
+                                 {digitalWrite(seg[i],Chars[num][i+1]);
+                                 }
+                      }
+                      else {
+                                 for(int i = 0;i<8;i++)
+                                 {digitalWrite(seg[i],!Chars[num][i+1]);
+                                 }
+                      }
+           }
+}
+
+void loop() {
+           for(int i = 0;i < chars;i++) {
+                      //print
+                      Print(i);
+                      delay(1000);
+           }
+
