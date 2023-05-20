@@ -2,7 +2,6 @@ int ledPinR=2;
 int ledPinY=3;
 int ledPinG=4;
 
-
 void setup()
 {
     pinMode(ledPinR,OUTPUT);
