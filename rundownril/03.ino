@@ -10,13 +10,11 @@ int lastButtonState;    // the previous state of button
 int currentButtonState; // the current state of button
 
 
-void setup()
-{
+void setup(){
   pinMode(BUTTON1, INPUT);
   pinMode(BUTTON2, INPUT);
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
-
 
   Serial.begin(9600);                // initialize serial
   pinMode(BUTTON2, INPUT_PULLUP); // set arduino pin to input pull-up mode
@@ -25,8 +23,7 @@ void setup()
   currentButtonState = digitalRead(BUTTON2);
 }
 
-void loop()
-{
+void loop(){
   BUTTONstate1 = digitalRead(BUTTON1);
   if (BUTTONstate1 == HIGH)
   {
@@ -35,17 +32,17 @@ void loop()
   else{
     digitalWrite(LED1, LOW);
   }
+  
   BUTTONstate2 = digitalRead(BUTTON2);
   lastButtonState    = currentButtonState;      // save the last state
-  currentButtonState = digitalRead(BUTTON2); // read new state
+  currentButtonState = digitalRead(BUTTON2);    // read new state
 
-  if(lastButtonState == HIGH && currentButtonState == LOW) {
+  if(lastButtonState == HIGH && currentButtonState == LOW){
     Serial.println("The button is pressed");
-
     // toggle state of LED
     ledState = !ledState;
 
     // control LED arccoding to the toggled state
     digitalWrite(LED2, ledState); 
   }
-    }
+}
