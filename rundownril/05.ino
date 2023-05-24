@@ -14,7 +14,6 @@ E (seg[4] in this project) |   |
  */
 #define A 8
 #define B 7
-
 #define C 6
 #define D 5
 #define E 4
