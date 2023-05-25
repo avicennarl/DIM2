@@ -1,4 +1,4 @@
-int ledPin = 4;
+int ledPin = 5;
 int readValue = 0;
 int ledValue = 0;
 
