@@ -46,7 +46,6 @@ byte Chars[35][9] {
             {'g',1,0,1,1,1,1,0,0},//G/16
             {'h',0,1,1,0,1,1,1,0},//H/17
             {'i',0,0,0,0,1,1,0,0},//I/18
-
             {'j',0,1,1,1,1,0,0,0},//J/19
             {'l',0,0,0,1,1,1,0,0},//L/20
             {'n',0,0,1,0,1,0,1,0},//n/21
@@ -202,6 +201,7 @@ int DP=10;
 int dy=50;
 void one()
 {
+  //seven segments versi anoda
   //active low pins
   digitalWrite(A,HIGH);
   digitalWrite(B,LOW);
