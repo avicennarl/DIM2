@@ -16,7 +16,7 @@ void setup(){
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
 
-  Serial.begin(9600);                // initialize serial
+  Serial.begin(9600);             // initialize serial
   pinMode(BUTTON2, INPUT_PULLUP); // set arduino pin to input pull-up mode
   pinMode(LED2, OUTPUT);          // set arduino pin to output mode
 
